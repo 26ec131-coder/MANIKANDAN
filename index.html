@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LifeLink - Organ Donor and Finder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="top" hidden>
+  <h1>LifeLink</h1>
+  <nav aria-label="Main">
+    <button data-go="home">Dashboard</button>
+    <button data-go="register">Register donor</button>
+    <button data-go="find">Find donor</button>
+    <button data-go="request">Request organ</button>
+    <button data-go="records">Records</button>
+    <button id="logout">Log out</button>
+  </nav>
+</header>
+
+<main>
+  <section id="login" class="view">
+    <div class="card narrow">
+      <h2>Log in to LifeLink</h2>
+      <p class="muted">Demo login. Use any email and a password of 6 or more characters.</p>
+      <form id="loginForm" novalidate>
+        <label>Email <input id="lEmail" type="email" placeholder="you@example.com"></label>
+        <label>Password <input id="lPass" type="password"></label>
+        <p class="err" id="lErr"></p>
+        <button class="primary">Log in</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="home" class="view" hidden>
+    <h2>One registration can save up to eight lives</h2>
+    <p class="muted">Register as a donor, search registered donors, or post an organ request. All data is sample data kept in this page only.</p>
+    <div class="stats">
+      <div><b id="sDonors">0</b><span>Registered donors</span></div>
+      <div><b id="sReq">0</b><span>Open requests</span></div>
+      <div><b id="sOrgans">0</b><span>Organ types available</span></div>
+    </div>
+    <p class="note">Educational prototype. It does not verify medical details or allocate organs. Official allocation is handled by authorised transplant bodies.</p>
+  </section>
+
+  <section id="register" class="view" hidden>
+    <div class="card">
+      <h2>Register as a donor</h2>
+      <form id="donorForm" novalidate class="grid">
+        <label>Full name <input id="dName"></label>
+        <label>Age <input id="dAge" type="number"></label>
+        <label>Blood group <select id="dBlood"></select></label>
+        <label>Organ to donate <select id="dOrgan"></select></label>
+        <label>City <input id="dCity"></label>
+        <label>Contact number <input id="dPhone" inputmode="numeric" placeholder="10 digits"></label>
+        <label class="check wide"><input id="dConsent" type="checkbox"> I confirm this is sample data and I agree to be listed.</label>
+        <p class="err wide" id="dErr"></p>
+        <button class="primary wide">Register donor</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="find" class="view" hidden>
+    <div class="card">
+      <h2>Find a donor</h2>
+      <div class="grid">
+        <label>Organ <select id="fOrgan"></select></label>
+        <label>Blood group <select id="fBlood"></select></label>
+        <label>City <input id="fCity" placeholder="Any city"></label>
+      </div>
+      <p class="muted" id="fCount"></p>
+      <div class="tablewrap"><table><thead><tr><th>Name</th><th>Age</th><th>Blood</th><th>Organ</th><th>City</th><th>Contact</th></tr></thead><tbody id="fBody"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="request" class="view" hidden>
+    <div class="card">
+      <h2>Request an organ</h2>
+      <form id="reqForm" novalidate class="grid">
+        <label>Patient name <input id="rName"></label>
+        <label>Organ needed <select id="rOrgan"></select></label>
+        <label>Blood group <select id="rBlood"></select></label>
+        <label>City <input id="rCity"></label>
+        <label>Urgency <select id="rUrgency"><option value="">Select</option><option>Normal</option><option>Urgent</option><option>Critical</option></select></label>
+        <p class="err wide" id="rErr"></p>
+        <button class="primary wide">Submit request</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="records" class="view" hidden>
+    <div class="card">
+      <h2>Organ requests</h2>
+      <div class="tablewrap"><table><thead><tr><th>ID</th><th>Patient</th><th>Organ</th><th>Blood</th><th>City</th><th>Urgency</th></tr></thead><tbody id="rBody"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="logoutView" class="view" hidden>
+    <div class="card narrow center">
+      <h2>See you again</h2>
+      <p class="muted">You have been signed out.</p>
+      <button class="primary" id="backLogin">Back to log in</button>
+    </div>
+  </section>
+</main>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
